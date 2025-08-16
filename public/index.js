@@ -24,7 +24,11 @@ async function getAudio() {
   // Call fetch GET to /audio and apply #audio src
   const response = await fetch('/audio');
   const data = await response.json();
-  audioEl.src = data.audio ?? 'audio.mp3';
+  if (data.success) {
+    audioEl.src = data.audio ?? 'audio.mp3';
+  } else {
+    alert(data.error ?? 'Error fetching audio');
+  }
 }
 
 async function setupCamera() {
