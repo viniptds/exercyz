@@ -191,7 +191,7 @@ document.getElementById("startBtn").addEventListener("click", () => {
     running = true;
     startLoop();
   }
-  // audioEl.play();
+  audioEl.play();
 });
 
 document.getElementById("stopBtn").addEventListener("click", () => {
@@ -211,7 +211,7 @@ document.getElementById("stopBtn").addEventListener("click", () => {
   }
   // alert('Seu treino acabou! Você fez ' + reps + ' repetições.');
 
-  // audioEl.pause();
+  audioEl.pause();
 });
 
 if (running) {

@@ -121,6 +121,8 @@ document.getElementById("startBtn").addEventListener("click", async () => {
   running = true;
   await startLoop();
 
+  audioEl.play();
+
 });
 
 document.getElementById("stopBtn").addEventListener("click", () => {
@@ -136,6 +138,7 @@ document.getElementById("stopBtn").addEventListener("click", () => {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
+  audioEl.pause();
   alert('Seu treino acabou! Você fez ' + reps + ' repetições.');
 
 });

@@ -54,6 +54,9 @@ html,
         /* transform: scale3d(1.5, 1.5, -1.5); */
         /* transform: translate(-50%, -50%); */
         border-radius: 16px;
+      }
+
+      .reverse {
         transform: scaleX(-1);
       }
 
@@ -128,6 +131,9 @@ html,
 
       .text-white {
         color: #fff;
+      }
+      .tip {
+        margin: 0 0 30px 12px;
       }
 
 .phone-wrap {

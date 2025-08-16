@@ -14,8 +14,17 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "home.html"));
 });
-app.get("/phone", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "phone.html"));
+
+const routes = [
+    'boxing',
+    'deadlift',
+    'phone'
+]
+
+routes.forEach(route => {
+    app.get('/' + route, (req, res) => {
+        res.sendFile(path.join(__dirname, "public", `${route}.html`));
+    });
 });
 
 app.get('/audio', (req, res) => {

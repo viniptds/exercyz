@@ -28,6 +28,7 @@ async function getAudio() {
     audioEl.src = data.audio ?? 'audio.mp3';
   } else {
     alert(data.error ?? 'Error fetching audio');
+    audioEl.src = 'audio.mp3';
   }
 }
 
@@ -46,12 +47,6 @@ async function setupCamera() {
   video.srcObject = stream;
   await video.play();
   resizeCanvas();
-
-  // const audioEl = document.createElement("audio");
-  // audioEl.crossOrigin = "anonymous";
-  // audioEl.src = "audio.mp3";
-  // audioEl.loop = true;
-  // audioEl.play();
 }
 
 function resizeCanvas() {
@@ -62,30 +57,6 @@ function resizeCanvas() {
 }
 
 window.addEventListener("resize", resizeCanvas);
-
-// document.getElementById("startBtn").addEventListener("click", () => {
-//   // Resume context on first gesture
-//   if (audioCtx.state === "suspended") {
-//     audioCtx.resume();
-//   }
-//   document.getElementById("startBtn").classList.add("hidden");
-//   document.getElementById("stopBtn").classList.remove("hidden");
-//   running = true;
-
-//   audioEl.play();
-// });
-
-// document.getElementById("stopBtn").addEventListener("click", () => {
-//   // Resume context on first gesture
-//   if (audioCtx.state !== "suspended") {
-//     audioCtx.suspend();
-//   }
-//   document.getElementById("startBtn").classList.remove("hidden");
-//   document.getElementById("stopBtn").classList.add("hidden");
-//   running = false;
-
-//   audioEl.pause();
-// });
 
 async function boot() {
   try {
@@ -106,8 +77,15 @@ async function boot() {
 
 flipBtn.addEventListener("click", async () => {
   // alternar entre frontal/traseira (mobile)
-  currentFacingMode =
-    currentFacingMode === "user" ? "environment" : "user";
+  if (currentFacingMode === "user") {
+    video.classList.remove("reverse");
+    currentFacingMode = "environment";
+    // flipBtn.textContent = "Traseira";
+  } else {
+    video.classList.add("reverse");
+    currentFacingMode = "user";
+    // flipBtn.textContent = "Frontal";
+  }
   await setupCamera();
 });
 
