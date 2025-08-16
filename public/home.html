@@ -123,7 +123,7 @@
       <div class="small">Dica: boa iluminação melhora a precisão.</div>
       <!-- Audio options -->
       <!-- Option 1: embedded audio -->
-      <audio src="./audio.mp3" id="audio" controls loop></audio>
+      <audio id="audio" controls loop></audio>
 
       <!-- Option 2: Spotify audio -->
       <!-- TODO: Add spotify audio source -->
@@ -134,7 +134,7 @@
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const source = audioCtx.createMediaElementSource(audioEl);
       const video = document.getElementById("video");
-      
+
       const filter = audioCtx.createBiquadFilter();
       filter.type = "lowpass";
       filter.frequency.value = 20000; // start with no cut

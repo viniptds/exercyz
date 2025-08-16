@@ -18,6 +18,17 @@ app.get("/phone", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "phone.html"));
 });
 
+app.get('/audio', (req, res) => {
+    if (process.env.AUDIO_FILE_NAME) {
+        res.json({
+            audio: process.env.AUDIO_FILE_NAME ?? 'audio.mp3',
+            success
+        });
+    } else {
+        res.status(404).json({ success: false, error: 'Audio file not found' });
+    }
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -1,4 +1,3 @@
-
 const video = document.getElementById("video");
 const canvas = document.getElementById("overlay");
 const ctx = canvas.getContext("2d");
@@ -19,6 +18,14 @@ source.connect(filter).connect(audioCtx.destination);
 let currentFacingMode = "user"; // ou "environment"
 let handLandmarker;
 let drawingUtils;
+
+
+async function getAudio() {
+  // Call fetch GET to /audio and apply #audio src
+  const response = await fetch('/audio');
+  const data = await response.json();
+  audioEl.src = data.audio ?? 'audio.mp3';
+}
 
 async function setupCamera() {
   const stream = await navigator.mediaDevices.getUserMedia({
@@ -78,8 +85,12 @@ window.addEventListener("resize", resizeCanvas);
 
 async function boot() {
   try {
+    // Set audio src from .env
+    await getAudio();
+
     hudSts.textContent = "Pedindo permissão da câmera…";
     await setupCamera();
+
     // await startLoop();
   } catch (err) {
     console.error(err);
