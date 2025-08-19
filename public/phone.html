@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <script src="/config.js"></script>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-CHRKZW7XJR"
-    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      if (window.GTM_TAG) {
+        var gtmScript = document.createElement("script");
+        gtmScript.async = true;
+        gtmScript.src =
+          "https://www.googletagmanager.com/gtm.js?id=" + window.GTM_TAG;
+        document.head.appendChild(gtmScript);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-      gtag("config", "G-CHRKZW7XJR");
+        gtag("config", window.GTM_TAG);
+      }
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,21 +50,21 @@
               <div id="hud">
                 <div class="row">
                   <div id="counter" class="text-white">✋ 0</div>
-                  <button id="flip" class="text-white">Trocar câmera</button>
+                  <button id="flip" class="text-white">Switch camera</button>
                 </div>
-                <div id="status" class="small text-white">Inicializando…</div>
+                <div id="status" class="small text-white">Starting...</div>
               </div>
               <div id="menu">
-                <button class="text-white hidden" id="startBtn">Iniciar</button>
+                <button class="text-white hidden" id="startBtn">Play</button>
 
-                <button class="text-white hidden" id="stopBtn">Parar</button>
+                <button class="text-white hidden" id="stopBtn">Pause</button>
                 <div class="hidden text-white" id="filterPercent">0%</div>
                 <!-- TODO: record track -->
                 <!-- <button class="small" id="recordBtn">Record</button> -->
               </div>
             </div>
             <div class="small text-white tip">
-              Dica: uma boa iluminação melhora a precisão.
+              Tip: a good lighting improves accuracy.
             </div>
 
             <!-- Audio options -->
@@ -94,7 +98,5 @@
     </script>
     <script type="module" src="index.js"></script>
     <script type="module" src="demo.js"></script>
-    <!-- <script type="module" src="deadlift.js"></script> -->
-    <!-- <script type="module" src="boxing.js"></script> -->
   </body>
 </html>

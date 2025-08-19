@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Audio Filter with Hands</title>
+    <title>Audio Filter with Deadlift</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -20,44 +20,45 @@
           <div class="wrap">
             <div id="stage">
               <div id="video-zone">
-                <video id="video" class="reverse" playsinline autoplay muted></video>
+                <video
+                  id="video"
+                  class="reverse"
+                  playsinline
+                  autoplay
+                  muted
+                ></video>
               </div>
               <canvas id="overlay"></canvas>
               <div id="hud">
                 <div class="row">
                   <div id="counter" class="text-white">✋ 0</div>
-                  <button id="flip" class="text-white">Trocar câmera</button>
+                  <button id="flip" class="text-white">Switch camera</button>
                 </div>
-                <div id="status" class="small text-white">Inicializando…</div>
+                <div id="status" class="small text-white">Starting...</div>
               </div>
               <div id="menu">
-                <button class="text-white hidden" id="startBtn">Iniciar</button>
+                <button class="text-white hidden" id="startBtn">Play</button>
 
-                <button class="text-white hidden" id="stopBtn">Parar</button>
+                <button class="text-white hidden" id="stopBtn">Pause</button>
                 <div class="hidden text-white" id="filterPercent">0%</div>
                 <!-- TODO: record track -->
                 <!-- <button class="small" id="recordBtn">Record</button> -->
               </div>
             </div>
             <div class="small text-white tip">
-              Dica: uma boa iluminação melhora a precisão.
+              Tip: a good lighting improves accuracy.
             </div>
 
             <!-- Audio options -->
             <!-- Option 1: embedded audio -->
-            <audio
-              id="audio"
-              class="hidden"
-              controls
-              loop
-            ></audio>
+            <audio id="audio" class="hidden" controls loop></audio>
 
             <!-- Option 2: Spotify audio -->
             <!-- TODO: Add spotify audio source -->
             <!-- embedded Spotify -->
           </div>
           <!-- End content -->
-           
+
           <div class="home-indicator" aria-hidden="true"></div>
         </div>
       </div>

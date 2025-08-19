@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
@@ -37,6 +38,11 @@ app.get('/audio', (req, res) => {
     } else {
         res.status(404).json({ success: false, error: 'Audio file not found' });
     }
+});
+
+app.get("/config.js", (req, res) => {
+    res.type("application/javascript");
+    res.send(`window.GTM_TAG = "${process.env.GTM_TAG || ""}";`);
 });
 
 // Start server

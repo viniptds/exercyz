@@ -21,14 +21,14 @@ let leftPunching = false;
 let rightPunching = false;
 
 async function initModel() {
-    hudSts.textContent = "Carregando modelo…";
+    hudSts.textContent = "Loading model...";
     const vision = await FilesetResolver.forVisionTasks(WASM_URL);
     poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
         baseOptions: { modelAssetPath: MODEL_URL },
         runningMode: "VIDEO"
     });
     drawingUtils = new DrawingUtils(ctx);
-    hudSts.textContent = "Modelo pronto.";
+    hudSts.textContent = "Model ready.";
     hudCnt.textContent = `🥊 Reps: ${reps}`;
     document.getElementById("startBtn").classList.remove("hidden");
 }
@@ -142,7 +142,7 @@ document.getElementById("stopBtn").addEventListener("click", () => {
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-    alert('Seu treino acabou! Você fez ' + reps + ' repetições.');
+    alert("Your training is over! You've done " + reps + ' reps.');
     audioEl.pause();
 });
 

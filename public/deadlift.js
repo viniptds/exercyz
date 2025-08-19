@@ -20,7 +20,7 @@ let isLowering = false;
 let reps = 0;
 
 async function initModel() {
-  hudSts.textContent = "Carregando modelo…";
+  hudSts.textContent = "Loading model...";
   try {
     const vision = await FilesetResolver.forVisionTasks(WASM_URL);
     poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
@@ -28,12 +28,12 @@ async function initModel() {
       runningMode: "VIDEO"
     });
     drawingUtils = new DrawingUtils(ctx);
-    hudSts.textContent = "Modelo pronto.";
+    hudSts.textContent = "Model ready.";
     hudCnt.textContent = `🏋️ Reps: ${reps}`;
     document.getElementById("startBtn").classList.remove("hidden");
   } catch (error) {
-    console.error("Erro ao carregar o modelo:", error);
-    hudSts.textContent = "Erro ao carregar o modelo.";
+    console.error("Error loading model:", error);
+    hudSts.textContent = "Error loading model.";
   }
 }
 
@@ -139,7 +139,7 @@ document.getElementById("stopBtn").addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
   audioEl.pause();
-  alert('Seu treino acabou! Você fez ' + reps + ' repetições.');
+  alert("Your training is over! You've done " + reps + ' reps.');
 
 });
 

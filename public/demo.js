@@ -44,7 +44,7 @@ function countFingersForHand(landmarks, handednessLabel) {
 }
 
 async function initModel() {
-  hudSts.textContent = "Carregando modelo…";
+  hudSts.textContent = "Loading model...";
   const vision = await FilesetResolver.forVisionTasks(WASM_URL);
   handLandmarker = await HandLandmarker.createFromOptions(vision, {
     baseOptions: { modelAssetPath: MODEL_URL },
@@ -52,7 +52,7 @@ async function initModel() {
     runningMode: "VIDEO",
   });
   drawingUtils = new DrawingUtils(ctx);
-  hudSts.textContent = "Modelo pronto.";
+  hudSts.textContent = "Model ready.";
   document.getElementById("startBtn").classList.remove("hidden");
 }
 
@@ -104,8 +104,8 @@ function drawResults(results) {
 
   hudCnt.textContent = `✋ ${totalAllHands}`;
   hudSts.textContent = results.landmarks?.length
-    ? `Mãos detectadas: ${results.landmarks.length}`
-    : "Nenhuma mão detectada";
+    ? `Hands detected: ${results.landmarks.length}`
+    : "No hands detected.";
 }
 
 async function startLoop() {
