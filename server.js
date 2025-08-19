@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, "assets")));
 
 // Default route
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "routes", "demo.html"));
+    res.sendFile(path.join(__dirname, "public", "demo.html"));
 });
 
 const routes = [
