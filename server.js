@@ -12,13 +12,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Default route
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "home.html"));
+    res.sendFile(path.join(__dirname, "public", "phone.html"));
 });
 
 const routes = [
     'boxing',
     'deadlift',
-    'phone'
+    'phone',
+    'home'
 ]
 
 routes.forEach(route => {
