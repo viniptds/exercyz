@@ -9,23 +9,26 @@ const app = express();
 app.use(cors());
 
 // Serve static files from public/
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "assets")));
 
 // Default route
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "phone.html"));
+    res.sendFile(path.join(__dirname, "routes", "demo.html"));
 });
 
 const routes = [
     'boxing',
     'deadlift',
-    'phone',
+    'demo',
     'home'
 ]
 
 routes.forEach(route => {
     app.get('/' + route, (req, res) => {
         res.sendFile(path.join(__dirname, "public", `${route}.html`));
+    });
+    app.get('/' + route + ".js", (req, res) => {
+        res.sendFile(path.join(__dirname, "public", `${route}.js`));
     });
 });
 
