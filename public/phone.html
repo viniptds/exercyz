@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-CHRKZW7XJR"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-CHRKZW7XJR");
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Audio Filter with Hands</title>
@@ -20,7 +34,13 @@
           <div class="wrap">
             <div id="stage">
               <div id="video-zone">
-                <video id="video" class="reverse" playsinline autoplay muted></video>
+                <video
+                  id="video"
+                  class="reverse"
+                  playsinline
+                  autoplay
+                  muted
+                ></video>
               </div>
               <canvas id="overlay"></canvas>
               <div id="hud">
@@ -45,19 +65,14 @@
 
             <!-- Audio options -->
             <!-- Option 1: embedded audio -->
-            <audio
-              id="audio"
-              class="hidden"
-              controls
-              loop
-            ></audio>
+            <audio id="audio" class="hidden" controls loop></audio>
 
             <!-- Option 2: Spotify audio -->
             <!-- TODO: Add spotify audio source -->
             <!-- embedded Spotify -->
           </div>
           <!-- End content -->
-           
+
           <div class="home-indicator" aria-hidden="true"></div>
         </div>
       </div>
