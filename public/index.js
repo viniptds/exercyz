@@ -63,15 +63,15 @@ async function boot() {
     // Set audio src from .env
     await getAudio();
 
-    hudSts.textContent = "Pedindo permissão da câmera…";
+    hudSts.textContent = "Awaiting camera permission...";
     await setupCamera();
 
     // await startLoop();
   } catch (err) {
     console.error(err);
     hudSts.textContent =
-      "Erro ao acessar câmera ou carregar modelo. Veja o console.";
-    alert("Falha ao inicializar: " + err.message);
+      "Error on acessing camera ou loading model. Check your console.";
+    // alert("Falha ao inicializar: " + err.message);
   }
 }
 
